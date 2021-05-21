@@ -1,7 +1,7 @@
 package Exception;
 
 /**
- * Ошибка несоответствия массива указанным параметрам
+ * Ошибка несоответствия элемента массива числовому значению
  */
 public class MyArrayDataException extends Exception {
 
