@@ -9,7 +9,7 @@ public class MyArrayDataException extends Exception {
         super(message);
     }
 
-    public MyArrayDataException() {
-        super("Array element must be integer");
+    public MyArrayDataException(int row, int column) {
+        super("Array element must be integer in [" + row + "," + column + ']');
     }
 }
