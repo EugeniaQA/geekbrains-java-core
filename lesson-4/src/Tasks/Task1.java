@@ -31,6 +31,14 @@ public class Task1 implements ITask {
                 "blueberry",
                 "apple",
                 "apple",
+                "berry",
+                "apple",
+                "orange",
+                "pineapple",
+                "berry",
+                "blueberry",
+                "apple",
+                "apple",
                 "berry"
         };
     }
