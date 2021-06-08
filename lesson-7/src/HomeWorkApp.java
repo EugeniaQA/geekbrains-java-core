@@ -1,5 +1,6 @@
 import java.io.IOException;
 
+import AccuWeather.Models.Forecasts.v1.Daily;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -18,7 +19,7 @@ public class HomeWorkApp {
         // Код города Санкт-Петербург (295212) получен по запросу:
         // http://dataservice.accuweather.com/locations/v1/cities/ru/search.json?apikey=gAwJGM2Nas7v737TazCa6OvEcPjoOV1M&q=saint petersburg
         Request request = new Request.Builder()
-                .url("http://dataservice.accuweather.com/forecasts/v1/daily/5day/295212?apikey=gAwJGM2Nas7v737TazCa6OvEcPjoOV1M")
+                .url("http://dataservice.accuweather.com/forecasts/v1/daily/5day/295212?apikey=gAwJGM2Nas7v737TazCa6OvEcPjoOV1M&language=ru-ru&details=true&metric=true")
                 .build();
 
         try (Response response = client.newCall(request).execute()) {
@@ -44,6 +45,10 @@ public class HomeWorkApp {
     private static void printPrettifyJson(String body) {
         JsonElement element = JsonParser.parseString(body);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
-        System.out.println(gson.toJson(element));
+
+        var weatherInfo = gson.fromJson(element, Daily.class);
+
+        System.out.println("Погода в Санкт-Петербурге нв ближайшие 5 дней");
+        System.out.println(weatherInfo);
     }
 }
