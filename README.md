@@ -7,3 +7,4 @@
 1. [Обобщения](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-3)
 1. [Коллекции](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-4)
 1. [Средства ввода-вывода](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-5)
+1. [Работа с сетью](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-6)
