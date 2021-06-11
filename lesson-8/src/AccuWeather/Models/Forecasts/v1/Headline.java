@@ -16,6 +16,10 @@ public class Headline {
     private String MobileLink;
     private String Link;
 
+    public Date getEffectiveDate() {
+        return EffectiveDate;
+    }
+
     @Override
     public String toString() {
         return Text;

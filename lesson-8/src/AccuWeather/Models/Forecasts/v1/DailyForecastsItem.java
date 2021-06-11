@@ -25,6 +25,10 @@ public class DailyForecastsItem {
     private String MobileLink;
     private String Link;
 
+    public Date getDate() {
+        return Date;
+    }
+
     @Override
     public String toString() {
         SimpleDateFormat formatDate = new SimpleDateFormat("dd.MM.yyyy");
