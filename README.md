@@ -9,3 +9,4 @@
 1. [Средства ввода-вывода](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-5)
 1. [Работа с сетью](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-6)
 1. [Промежуточный проект](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-7)
+1. [JDBC](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-8)
