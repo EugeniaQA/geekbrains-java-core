@@ -1,6 +1,9 @@
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.Date;
 
 import AccuWeather.Models.Forecasts.v1.Daily;
+import AccuWeather.Services.Forecasts.v1.StorageService;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -12,6 +15,8 @@ import okhttp3.Response;
 public class HomeWorkApp {
 
     public static void main(String[] args){
+        var path = System.getProperty("java.class.path").split(";")[0];
+
         // Экземпляр класса OkHttpClient выполняет всю работу по созданию и отправке запросов
         OkHttpClient client = new OkHttpClient();
 
@@ -25,10 +30,30 @@ public class HomeWorkApp {
         try (Response response = client.newCall(request).execute()) {
             String body = response.body().string();
 
-            printPrettifyJson(body);
-            printMetadata(response);
+            var storageInstance = StorageService.getInstance(path);
+
+            JsonElement element = JsonParser.parseString(body);
+            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+            var weatherInfo = gson.fromJson(element, Daily.class);
+
+            var days = new Date[5];
+            var i = 0;
+            for (var item : weatherInfo.getDailyForecasts()) {
+                days[i] = item.getDate();
+                i++;
+            }
+
+            storageInstance.UpsertDailyForecasts("spb", weatherInfo);
+
+            for (var day : days) {
+                var dayWeather = storageInstance.GetFullDailyForecasts("spb", day);
+                System.out.println(dayWeather);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (SQLException sqlException) {
+            sqlException.printStackTrace();
         }
 
     }
