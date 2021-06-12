@@ -112,11 +112,17 @@ public class StorageService {
     private void UpsertDailyForecastItem(String city, DailyForecastsItem item) {
         try (PreparedStatement statement = this.connection.prepareStatement("INSERT INTO " +
                 "`daily_forecast` (update_date, city, forecast_date, details) " +
-                "VALUES(?, ?, ?, ?);")) {
+                "VALUES(?, ?, ?, ?)" +
+                "ON CONFLICT(city, forecast_date) DO " +
+                "UPDATE SET details = ?;")) {
+
+            var details = gson.toJson(item);
+
             statement.setObject(1, new Date());
             statement.setObject(2, city);
             statement.setObject(3, item.getDate());
-            statement.setObject(4, gson.toJson(item));
+            statement.setObject(4, details);
+            statement.setObject(5, details);
 
             statement.execute();
 
