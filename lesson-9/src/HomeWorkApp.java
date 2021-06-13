@@ -1,6 +1,5 @@
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class HomeWorkApp {
 
@@ -31,7 +30,7 @@ public class HomeWorkApp {
     public static List<Student> InquisitiveStudents(List<Student> students) {
         return students
                 .stream()
-                .sorted(Comparator.comparing(student -> student.getAllCourses().size()))
+                .sorted(Comparator.comparing(student -> -1 * student.getAllCourses().size()))
                 .limit(3)
                 .collect(Collectors.toList());
     }
