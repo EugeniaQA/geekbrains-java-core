@@ -10,3 +10,4 @@
 1. [Работа с сетью](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-6)
 1. [Промежуточный проект](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-7)
 1. [JDBC](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-8)
+1. [Stream API](https://github.com/EugeniaQA/geekbrains-java-core/tree/main/lesson-9)
